@@ -6,6 +6,7 @@ package netxd_customer;
 
 service CustomerService {
     rpc CreateCustomer(CustomerRequest) returns (CustomerResponse);
+    rpc CreateTransaction(TransactionRequest) returns (TransactionResponse);
 }
 
 message CustomerRequest{
@@ -22,4 +23,16 @@ message CustomerRequest{
 message CustomerResponse{
     string Customer_Id=1;
     string CreatedAt=2;
+}
+
+message TransactionRequest{
+    int64 Transaction_ID=1;
+    int64 From_ID=2;
+    int64 To_ID=3;
+    int64 Amount=4;
+    string Timestamp=5;
+}
+
+message TransactionResponse{
+    string Message =1;
 }
