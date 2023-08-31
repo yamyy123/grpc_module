@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option go_package = "github.com/kiran-blockchain/nextxd-go-advanced/grpc-mongo";
+
+package netxd_customer;
+
+service CustomerService {
+    rpc CreateCustomer(CustomerRequest) returns (CustomerResponse);
+}
+
+message CustomerRequest{
+    string Customer_Id=1;
+    string FirstName=2;
+    string LastName=3;
+    int32 BankId=4;
+    int64 Balance=5;
+    string CreatedAt=6;
+    string UpdatedAt=7;
+    bool IsActive=8;
+}
+
+message CustomerResponse{
+    string Customer_Id=1;
+    string CreatedAt=2;
+}
