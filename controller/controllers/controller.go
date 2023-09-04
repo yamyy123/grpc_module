@@ -12,10 +12,15 @@ import (
 
 type RPCServer struct {
 	pro.UnimplementedCustomerServiceServer
+	/*This defines a struct named RPCServer. It embeds the pro.UnimplementedCustomerServiceServer type, which is likely a generated type from your gRPC service definition.
+	 This implies that RPCServer is intended to be used as a server for the gRPC service. */
 }
 
 var (
 	CustomerService interfaces.Icustomer
+	/* This declares a global variable named CustomerService, which is of type interfaces.Icustomer. It appears to be used to interact with some external service or component, possibly related to customer operations.
+go
+*/
 )
 
 func (s *RPCServer) CreateCustomer(ctx context.Context, req *pro.CustomerRequest) (*pro.CustomerResponse, error) {

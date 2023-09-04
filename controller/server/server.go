@@ -18,6 +18,9 @@ func initDatabase(client *mongo.Client) {
 	CustomerCollection := config.GetCollection(client, "bankdb", "customer")
 	TransactionCollection:=config.GetCollection(client,"bankdb","transactions")
 controllers.CustomerService =service.InitCustomerService(client,CustomerCollection, TransactionCollection,context.Background())
+//this line setsup  the services needed for the operations
+/*t initializes the controllers.CustomerService variable by calling the service.InitCustomerService function, passing the MongoDB client and collections as parameters.
+ This is probably where your application's business logic for customer services is set up.*/
 
 }
 
@@ -34,10 +37,14 @@ func main() {
 		return
 	}
 	s := grpc.NewServer()
-	pro.RegisterCustomerServiceServer(s, &controllers.RPCServer{})
+	//It creates a new gRPC server instance s using grpc.NewServer().
 
+	pro.RegisterCustomerServiceServer(s, &controllers.RPCServer{})
+     //this line connect the  comntroller and server 
+	 //It registers the controllers.RPCServer{} as the gRPC server implementation for the pro package's CustomerServiceServer.
 	fmt.Println("Server listening on", constants.Port)
 	if err := s.Serve(lis); err != nil {
 		fmt.Printf("Failed to serve: %v", err)
 	}
+	//Finally, it starts serving gRPC requests using s.Serve(lis) and logs any errors if they occur during the serving process.
 }

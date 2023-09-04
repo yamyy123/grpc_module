@@ -36,6 +36,9 @@ func NewCustomerServiceClient(cc grpc.ClientConnInterface) CustomerServiceClient
 
 func (c *customerServiceClient) CreateCustomer(ctx context.Context, in *CustomerRequest, opts ...grpc.CallOption) (*CustomerResponse, error) {
 	out := new(CustomerResponse)
+    /* This line creates a new instance of the CustomerResponse struct and assigns it to the variable out. */
+
+
 	err := c.cc.Invoke(ctx, "/netxd_customer.CustomerService/CreateCustomer", in, out, opts...)
 	if err != nil {
 		return nil, err
