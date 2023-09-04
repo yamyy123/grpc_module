@@ -7,18 +7,17 @@ import (
 )
 
 type CustomerRequest struct {
-	Customer_Id string `json:"customer_id" bson:"customer_id"`
-	FirstName string `json:"firstname" bson:"firstname"`
-	LastName string `json:"lastname" bson:"lastname"`
-	BankId int32 `json:"bankid" bson:"bankid"`
-	Balance int64 `json:"balance" bson:"balance"`
-	CreatedAt string `json:"createdat" bson:"createdat"`
-	UpdatedAt string `json:"updatedat" bson:"updatedat"`
-	IsActive bool `json:"isactive" bson:"isactive"`
-	}
+	BankID int32  `json:"bankid" bson:"bankid"`
+	Customer_Name string `json:"customer_name" bson:"customer_name"`
+	Customer_ID int32  `json:"customer_id" bson:"customer_id"`
+	Balance int32  `json:"balance" bson:"balance"`
+}
 
-type CustomerResponse struct{
-	Customer_Id string `json:"customer_id" bson:"customer_id"`
-	CreatedAt string `json:"createdat" bson:"createdat"`
+type TransactionRequest struct{
+	Transaction_ID int32 `json:"transaction_id" bson:"transaction_id"`
+	From_ID int32 `json:"from_id" bson:"from_id"`
+	To_ID int32 `json:"to_id" bson:"to_id"`
+	Amount int32 `json:"amount" bson:"amount"`
+	
 }
 

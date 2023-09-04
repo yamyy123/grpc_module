@@ -6,33 +6,26 @@ package netxd_customer;
 
 service CustomerService {
     rpc CreateCustomer(CustomerRequest) returns (CustomerResponse);
-    rpc CreateTransaction(TransactionRequest) returns (TransactionResponse);
+    rpc UpdateCustomer(TransactionRequest) returns (TransactionResponse);
 }
 
 message CustomerRequest{
-    string Customer_Id=1;
-    string FirstName=2;
-    string LastName=3;
-    int32 BankId=4;
-    int64 Balance=5;
-    string CreatedAt=6;
-    string UpdatedAt=7;
-    bool IsActive=8;
+    int32 BankID=1;
+	string Customer_Name=2;
+	int32 Customer_ID=3;
+	int32 Balance=4; 
 }
 
 message CustomerResponse{
-    string Customer_Id=1;
-    string CreatedAt=2;
+    int32 Balance=1;
 }
 
 message TransactionRequest{
-    int64 Transaction_ID=1;
-    int64 From_ID=2;
-    int64 To_ID=3;
-    int64 Amount=4;
-    string Timestamp=5;
+    int32 From_ID=1;
+    int32 TO_ID=2;
+    int32 Amount=3;
 }
 
 message TransactionResponse{
-    string Message =1;
+    int32 From_ID=1;
 }

@@ -19,16 +19,32 @@ var (
 )
 
 func (s *RPCServer) CreateCustomer(ctx context.Context, req *pro.CustomerRequest) (*pro.CustomerResponse, error) {
-	dbCustomer := &models.CustomerRequest{Customer_Id: req.Customer_Id,CreatedAt: req.CreatedAt}
+	dbCustomer := &models.CustomerRequest{BankID: req.BankID,Customer_Name:req.Customer_Name,Customer_ID:req.Customer_ID,Balance: req.Balance}
 	result, err := CustomerService.CreateCustomer(dbCustomer)
 	if err != nil {
 		return nil, err
 	} else {
 		responseCustomer := &pro.CustomerResponse{
-		Customer_Id: result.Customer_Id,
-		CreatedAt: result.CreatedAt,
-
+			Balance: result.Balance,
+			
 		}
+		
 		return responseCustomer, nil
 	}
 }
+
+func (s *RPCServer) UpdateCustomer(ctx context.Context, req *pro.TransactionRequest) (*pro.TransactionResponse, error) {
+	
+	
+	result,err:=CustomerService.UpdateCustomer(req.From_ID,req.TO_ID,req.Amount)
+	if err != nil {
+	 return nil, err
+ }
+ responseCustomer := &pro.TransactionResponse{
+	 From_ID: result.From_ID,
+	 
+ }
+ 
+ return responseCustomer, nil
+//panic("unimple")
+ }
